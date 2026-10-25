@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop All Pieces — Urban Threads</title>
+  <meta name="description" content="Browse our entire collection of heavyweight hoodies, studio tees, chunky runners, and everyday accessories." />
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Core Stylesheet -->
+  <script type="module" crossorigin src="/assets/shop-z3us2ffF.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/common-DK7PpBao.js">
+  <link rel="stylesheet" crossorigin href="/assets/common-BGVHmedd.css">
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-title">Urban Threads</a>
+      
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">Shop</a>
+        <a href="cart.html" class="nav-link nav-cart-btn">
+          Cart <span class="cart-count-pill" id="nav-cart-count">0</span>
+        </a>
+        <div id="nav-auth-slot">
+          <!-- Populated dynamically by common.js -->
+          <a href="login.html" class="nav-link">Sign In</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container shop-view-head">
+      <p class="eyebrow">Collection 2026</p>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: gap; margin-bottom: 1.5rem;">
+        <div>
+          <h1 class="shop-main-title" id="shop-heading-dynamic">Quiet streetwear</h1>
+          <p class="text-muted" style="margin-top: 0.35rem; font-size: 0.875rem;">Every piece crafted for daily rotation in boxy, breathable, heavyweight cuts.</p>
+        </div>
+        <div id="catalog-count-label" class="font-mono text-muted" style="font-size: 0.75rem; padding-bottom: 0.5rem;">
+          Showing pieces
+        </div>
+      </div>
+
+      <!-- Filter Controls: Categories, Search, Sort -->
+      <div class="shop-filter-bar">
+        <!-- Category Pills (Flexbox) -->
+        <div class="pills-group" id="filter-pills">
+          <button type="button" class="cat-pill active" data-category="All">All Pieces</button>
+          <button type="button" class="cat-pill" data-category="Hoodies">Hoodies</button>
+          <button type="button" class="cat-pill" data-category="T-shirts">T-shirts</button>
+          <button type="button" class="cat-pill" data-category="Sneakers">Sneakers</button>
+          <button type="button" class="cat-pill" data-category="Accessories">Accessories</button>
+        </div>
+
+        <!-- Search & Sorting (Flexbox) -->
+        <div class="shop-tools">
+          <div class="search-input-wrap">
+            <input type="text" id="shop-search" class="search-input" placeholder="Search pieces..." />
+          </div>
+
+          <select id="shop-sort" class="sort-select">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Alphabetical</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Responsive CSS Grid for Product Listing -->
+      <div class="product-grid" id="catalog-grid" style="margin-bottom: 5rem;">
+        <!-- Populated dynamically by /js/shop-page.js -->
+      </div>
+    </div>
+  </main>
+
+  <!--  Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Urban Threads. All rights reserved.</p>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page Script -->
+</body>
+</html>

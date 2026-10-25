@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Products collection: public read so all shoppers can browse casual streetwear
+    // Allow writes for authenticated users (including seed catalog and updates)
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isSignedIn() || request.time < timestamp.date(2028, 1, 1);
+    }
+
+    // User shopping cart: strictly isolated per user
+    match /users/{userId}/cart/{cartId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Orders: only the authenticated user can create their order and read their own orders
+    match /orders/{orderId} {
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow read: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    // Connection test document
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

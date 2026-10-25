@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Threads — Streetwear & Casual Apparel</title>
+  <meta name="description" content="Urban Threads is a clean, minimal online streetwear store offering premium hoodies, t-shirts, sneakers, and accessories powered by Firebase Firestore and Authentication." />
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Core Stylesheet -->
+  <script type="module" crossorigin src="/assets/main-CArpmxz9.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/common-DK7PpBao.js">
+  <link rel="stylesheet" crossorigin href="/assets/common-BGVHmedd.css">
+</head>
+<body>
+  <!-- Global Header Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-title">Urban Threads</a>
+      
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="cart.html" class="nav-link nav-cart-btn">
+          Cart <span class="cart-count-pill" id="nav-cart-count">0</span>
+        </a>
+        <div id="nav-auth-slot">
+          <!-- Populated dynamically by common.js (Sign In / User Profile & Sign Out) -->
+          <a href="login.html" class="nav-link">Sign In</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="hero-wrap">
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">N E W &nbsp; S E A S O N</p>
+          <h1 class="hero-heading">Quiet basics,<br />loud comfort.</h1>
+          <p class="hero-desc">Casual streetwear made to be lived in.</p>
+          <div class="hero-cta">
+            <a href="shop.html" class="btn btn-primary">Shop the collection</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop by Category Section (Placed above Selected Essentials as requested) -->
+    <section class="home-section" style="background-color: var(--bg-card); padding: 4rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-eyebrow">Curated Lines</p>
+            <h2 class="section-heading">Shop by Category</h2>
+          </div>
+          <a href="shop.html" class="section-link">View all categories &rarr;</a>
+        </div>
+
+        <!-- Responsive CSS Grid for Categories -->
+        <div class="category-grid">
+          <a href="shop.html?category=Hoodies" class="category-card">
+            <div class="category-img-box">
+              <img src="/assets/images/a90ec77389256aa5f43db235807ff24f_e021f765.jpg" alt="Hoodies" class="pos-hoodie" />
+            </div>
+            <div class="category-meta">
+              <h3 class="category-name">Hoodies</h3>
+              <p class="category-sub">Heavyweight fleece & boxy drops</p>
+            </div>
+          </a>
+
+          <a href="shop.html?category=T-shirts" class="category-card">
+            <div class="category-img-box">
+              <img src="/assets/images/36661ffd991cf455eef891a7a97edffb_f13183a9.jpg" alt="T-shirts" class="pos-tee" />
+            </div>
+            <div class="category-meta">
+              <h3 class="category-name">T-shirts</h3>
+              <p class="category-sub">280gsm combed cotton jerseys</p>
+            </div>
+          </a>
+
+          <a href="shop.html?category=Sneakers" class="category-card">
+            <div class="category-img-box">
+              <img src="/assets/images/23adbc6ee871296b0f975ab783853d8f_d191c6d2.jpg" alt="Sneakers" />
+            </div>
+            <div class="category-meta">
+              <h3 class="category-name">Sneakers</h3>
+              <p class="category-sub">Woven gum sole court trainers</p>
+            </div>
+          </a>
+
+          <a href="shop.html?category=Accessories" class="category-card">
+            <div class="category-img-box">
+              <img src="/assets/images/16b687ac54ff2c5962feb740d84e7b98_e621c223.jpg" alt="Accessories" />
+            </div>
+            <div class="category-meta">
+              <h3 class="category-name">Accessories</h3>
+              <p class="category-sub">Studio canvas totes & beanies</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop by Collection Section — Big Clickable Editorial Banner linking to Hoodies -->
+    <section class="home-section collection-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-eyebrow">Curated capsule</p>
+            <h2 class="section-heading">Shop by Collection</h2>
+          </div>
+          <a href="shop.html?category=Hoodies" class="section-link">Shop Hoodies &rarr;</a>
+        </div>
+
+        <!-- Big Clickable Banner that navigates to the Hoodies category -->
+        <a href="shop.html?category=Hoodies" class="collection-editorial-banner" aria-label="Shop the Heavyweight Hoodie Collection">
+          <div class="collection-banner-inner">
+            <div class="collection-banner-media">
+              <img 
+                src="/assets/images/ade95327c3e02a96823440199ac81132_75fd39df.jpg" 
+                alt="Urban Threads Heavyweight Hoodie Collection" 
+                class="collection-banner-img" 
+                loading="lazy"
+              />
+            </div>
+            <div class="collection-banner-content">
+              <span class="collection-tag">Exclusive Drop &bull; Hoodies</span>
+              <h3 class="collection-banner-title">The Heavyweight Fleece &amp; Hoodie Capsule</h3>
+              <p class="collection-banner-desc">
+                Architectural boxy tailoring crafted from dense 450gsm organic French terry. Featuring seamless double-lined hoods, drop-shoulders, and enduring warmth for every season.
+              </p>
+              <div class="collection-cta-row">
+                <span class="collection-btn-pill">
+                  Shop Hoodies Category
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </span>
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.6);">From R58.00</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Selected Essentials Section -->
+    <section class="home-section" style="padding-top: 1rem;">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-eyebrow">Handpicked rotation</p>
+            <h2 class="section-heading">Selected Essentials</h2>
+          </div>
+          <a href="shop.html" class="section-link">See all pieces &rarr;</a>
+        </div>
+
+        <!-- Responsive CSS Grid for Selected Essentials -->
+        <div class="product-grid" id="essentials-product-grid">
+          <!-- Rendered dynamically by JavaScript & Firebase Firestore -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights Strip -->
+    <section class="container features-strip">
+      <div class="features-grid">
+        <div class="feature-item">
+          <h4>Heavyweight Organic Fleece</h4>
+          <p>Custom 450gsm dense loops combed for cloud-like softness that holds an architectural silhouette wear after wear.</p>
+        </div>
+        <div class="feature-item">
+          <h4>South African Flat-Rate Delivery</h4>
+          <p>Fast, reliable courier shipping across all major provinces with complimentary delivery on orders over R150.</p>
+        </div>
+        <div class="feature-item">
+          <h4>Conscious Small-Batch Drops</h4>
+          <p>Mindfully produced in limited seasonal runs with zero-pill ribbing and reinforced collar bindings.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Urban Threads. All rights reserved.</p>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page Script -->
+</body>
+</html>

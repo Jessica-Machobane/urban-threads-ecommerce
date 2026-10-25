@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Streetwear catalog product item",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the apparel item",
+          "maxLength": 120
+        },
+        "price": {
+          "type": "number",
+          "description": "Price in USD"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category: Hoodies, T-shirts, Sneakers, or Accessories",
+          "maxLength": 50
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the product",
+          "maxLength": 500
+        },
+        "imageURL": {
+          "type": "string",
+          "description": "Image URL of the product",
+          "maxLength": 1000
+        },
+        "inStock": {
+          "type": "boolean",
+          "description": "Stock availability flag"
+        },
+        "sizes": {
+          "type": "array",
+          "description": "Available streetwear sizes"
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "description": "Whether item is featured on homepage"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation"
+        }
+      },
+      "required": ["name", "price", "category", "description", "imageURL"]
+    },
+    "UserCart": {
+      "title": "UserCart",
+      "description": "User shopping cart state",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner user UID",
+          "maxLength": 128
+        },
+        "items": {
+          "type": "array",
+          "description": "Cart items list"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last updated ISO timestamp"
+        }
+      },
+      "required": ["userId", "items"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Completed customer order",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Customer UID",
+          "maxLength": 128
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "Customer email",
+          "maxLength": 120
+        },
+        "items": {
+          "type": "array",
+          "description": "Ordered items"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total order amount"
+        },
+        "status": {
+          "type": "string",
+          "description": "Order status (pending, completed)",
+          "maxLength": 50
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Order placement timestamp"
+        }
+      },
+      "required": ["userId", "items", "total", "status"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of streetwear apparel products"
+    },
+    "/users/{userId}/cart/{cartId}": {
+      "schema": "UserCart",
+      "description": "User shopping cart subcollection"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer placed orders"
+    }
+  }
+}

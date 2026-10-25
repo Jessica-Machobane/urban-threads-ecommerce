@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart & Checkout — Urban Threads</title>
+  <meta name="description" content="Review your bag, calculate South African shipping, apply discount codes, and complete checkout securely." />
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- Global Header Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-title">Urban Threads</a>
+      
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="cart.html" class="nav-link nav-cart-btn active">
+          Cart <span class="cart-count-pill" id="nav-cart-count">0</span>
+        </a>
+        <div id="nav-auth-slot">
+          <!-- Populated dynamically by common.js -->
+          <a href="login.html" class="nav-link">Sign In</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container cart-page-wrap">
+      <p class="eyebrow">Y O U R &nbsp; B A G</p>
+      <h1 class="cart-heading">Shopping Cart</h1>
+      <p class="cart-subheading" id="cart-heading-count">Review your selected pieces before proceeding.</p>
+
+      <!-- Active Cart Grid Layout (CSS Grid 1.5fr / 1fr) -->
+      <div class="cart-grid-layout" id="cart-active-grid">
+        <!-- Left: Cart Items List -->
+        <div class="cart-items-card">
+          <div id="cart-items-list">
+            <!-- Rendered dynamically by /js/cart-page.js -->
+          </div>
+        </div>
+
+        <!-- Right: Order Summary Panel -->
+        <div class="cart-summary-card">
+          <h3 class="summary-title">Order Summary</h3>
+
+          <!-- Promo Input -->
+          <div class="promo-input-group">
+            <input type="text" id="cart-promo-code" placeholder="PROMO CODE (e.g. THREADS10)" />
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-apply-promo">Apply</button>
+          </div>
+
+          <!-- Price Breakdown -->
+          <div class="summary-rows">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="sum-subtotal" class="font-mono">R0.00</span>
+            </div>
+            <div class="summary-row text-emerald" id="sum-discount-row" style="display: none;">
+              <span>Discount</span>
+              <span id="sum-discount" class="font-mono">-R0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span id="sum-shipping" class="font-mono">Free</span>
+            </div>
+            <div class="summary-row">
+              <span>Estimated Tax (8%)</span>
+              <span id="sum-tax" class="font-mono">R0.00</span>
+            </div>
+          </div>
+
+          <div class="summary-total-bar">
+            <span>Total</span>
+            <span id="sum-total" class="font-mono bold">R0.00</span>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" id="btn-open-checkout">
+            Proceed to Checkout &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Empty Cart State -->
+      <div class="empty-cart-card" id="cart-empty-card" style="display: none;">
+        <h2>Your bag is empty</h2>
+        <p>Explore quiet hoodies, combed tees, and minimal sneakers.</p>
+        <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Checkout Modal -->
+  <div class="modal-backdrop" id="checkout-modal">
+    <div class="modal-box checkout-modal-box">
+      <button type="button" class="modal-close" id="btn-close-checkout">&times;</button>
+      
+      <p class="eyebrow">S E C U R E &nbsp; C H E C K O U T</p>
+      <h2 class="font-serif" style="font-size: 1.75rem; margin-top: 0.25rem;">Complete Order</h2>
+      <p class="text-muted" style="font-size: 0.75rem; margin-bottom: 1.5rem;">Enter shipping and payment details.</p>
+
+      <form id="checkout-main-form">
+        <div id="checkout-auth-banner" style="margin-bottom: 1.25rem;"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="co-name">Full Name</label>
+          <input type="text" id="co-name" class="form-input" required placeholder="Alex Turner" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="co-email">Email Address</label>
+          <input type="email" id="co-email" class="form-input" required placeholder="alex@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="co-address">Street Address</label>
+          <input type="text" id="co-address" class="form-input" required placeholder="124 Long Street" />
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="co-city">City</label>
+            <input type="text" id="co-city" class="form-input" required placeholder="Cape Town" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="co-zip">Postal Code</label>
+            <input type="text" id="co-zip" class="form-input" required placeholder="8001" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="co-card">Payment Card</label>
+          <input type="text" id="co-card" class="form-input font-mono" required placeholder="4000 1234 5678 9010" />
+        </div>
+
+        <div class="checkout-summary-strip">
+          <span>Total to charge:</span>
+          <span class="font-mono bold" id="co-charge-total">R0.00</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="btn-submit-order" style="margin-top: 1rem;">
+          Place Order
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Success Confirmation Modal -->
+  <div class="modal-backdrop" id="order-success-modal">
+    <div class="modal-box checkout-modal-box" style="text-align: center;">
+      <div style="width: 3.5rem; height: 3.5rem; border-radius: var(--radius-full); background: #D1FAE5; color: #065F46; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto; font-size: 1.5rem;">
+        ✓
+      </div>
+      <p class="eyebrow text-emerald">O R D E R &nbsp; C O N F I R M E D</p>
+      <h2 class="font-serif" style="font-size: 2rem; margin-top: 0.25rem;">Thank You!</h2>
+      <p class="text-muted" style="font-size: 0.8125rem; margin-top: 0.5rem;">Your order has been recorded and will be shipped soon.</p>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem; margin: 1.5rem 0; font-size: 0.8125rem; text-align: left;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span class="text-muted">Order Number:</span>
+          <span class="font-mono bold" id="success-order-id">UT-000000</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span class="text-muted">Charged Amount:</span>
+          <span class="font-mono bold" id="success-order-total">R0.00</span>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block" id="btn-close-success">
+        Continue Shopping
+      </button>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Urban Threads. All rights reserved.</p>
+      <div style="display: flex; gap: 1.5rem;">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page Script -->
+  <script type="module" src="/js/cart-page.js"></script>
+</body>
+</html>
